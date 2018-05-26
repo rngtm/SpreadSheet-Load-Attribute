@@ -20,6 +20,11 @@ ExportedObj/
 *.unityproj
 *.booproj
 
+# ===================================== #
+# JetBrains generated #
+# ===================================== #
+.idea/
+
 # ============ #
 # OS generated #
 # ============ #
@@ -36,7 +41,7 @@ Thumbs.db
 # for others   #
 # ============ #
 Assets/Local/
-Assets/Local.meta 
+Assets/Local.meta
 
 *.log #log files, for some plugins
 *.pyc #python bytecode cache, for some plugins.
