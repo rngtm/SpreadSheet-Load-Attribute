@@ -49,13 +49,13 @@
         /// <summary>
         /// APIキーを使用したGoogleスプレッドシートの取得
         /// </summary>
-        public static IEnumerator LoadCoroutine(string apiKey, string sheetId, string range)
+        public static IEnumerator LoadCoroutine()
         {
             _isLoading = true;
             _isSuccess = false;
             
-            var api = "https://sheets.googleapis.com/v4/spreadsheets/" + sheetId + "/values/" + range + "?key=" +
-                      apiKey;
+            var api = "https://sheets.googleapis.com/v4/spreadsheets/" + Settings.SheetId + "/values/" + Settings.Range + "?key=" +
+                      Settings.ApiKey;
             using (var request = UnityWebRequest.Get(api))
             {
                 yield return request.SendWebRequest();
@@ -78,7 +78,7 @@
                     yield break;
                 }
 
-                var json = request.downloadHandler.text;
+                var json = request.downloadHandler.text; // Googleスプレッドシートから取得してきたJSON
                 var bytes = MessagePackSerializer.FromJson(json);
                 _sheet = MessagePackSerializer.Deserialize<SpreadSheet>(bytes);
                 _dictionary = _sheet.Values.ToDictionary(item => item[0], item => item); // 左のセルをキーとするDictionaryを作成
