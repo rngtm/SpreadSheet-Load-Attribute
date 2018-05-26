@@ -7,15 +7,15 @@ namespace GoogleSpreadSheet
     using UnityEngine.SceneManagement;
 
     public class SpreadSheetManager : MonoBehaviour
-    {
-        /// <summary>
-        /// シート取得中かどうか
-        /// </summary>
-        public static bool IsLoading { get; private set; }
-
+    {        
         [RuntimeInitializeOnLoadMethod]
         static void Init()
         {
+            if (!Settings.Active)
+            {
+                return; 
+            }
+            
             new GameObject("SpreadSheet Manager").AddComponent<SpreadSheetManager>();
         }
 
@@ -28,19 +28,21 @@ namespace GoogleSpreadSheet
         }
 
         /// <summary>
-        /// 取得テスト
+        /// 取得を行う
         /// </summary>
         IEnumerator GetSheetCoroutine()
         {
-            IsLoading = true;
-            yield return SpreadSheetLoader.LoadCoroutine(Settings.ApiKey, Settings.SheetId, Settings.Range);
+            yield return SpreadSheetLoader.LoadCoroutine();
             
-            if (!SpreadSheetLoader.IsSuccess) { yield break; } // 通信に失敗した場合は終了
+            if (!SpreadSheetLoader.IsSuccess)
+            {
+                // 通信に失敗した場合は終了
+                yield break;
+            } 
             
             SceneObjectUpdater.UpdateObjectValues(); // シーン内に存在するコンポーネントのメンバ値を更新
             
             SceneManager.activeSceneChanged += (from, to) => { OnChangeScene(); };
-            IsLoading = false;
         }
 
         /// <summary>
