@@ -47,7 +47,6 @@
         // ウィンドウの描画処理
         public static void UpdateObjectValues()
         {
-            Debug.Log("UpdateObjectValues");
             foreach (var component in GetAllTargetComponents())
             {
                 SetValue(component);
