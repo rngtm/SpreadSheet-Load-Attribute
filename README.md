@@ -21,6 +21,7 @@ https://developers.google.com/sheets/api/guides/authorizing?hl=ja
 
 <img src = "Demo/1_api_key.png" height = 240>
 <br>
+
 ### sheetId
 GoogleスプレッドシートのsheetIdを設定します。<br>
 https://developers.google.com/sheets/guides/concepts?hl=ja
@@ -34,6 +35,7 @@ Settings.csを以下のように設定します<br>
 SheetId = "1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps2";
 ```
 <br>
+
 ### Range
 Googleスプレッドシートで取得したい範囲を設定します。
 
@@ -44,6 +46,7 @@ Range = "シート1";
 ```
 <img src = "Demo/3_range.png" height = 240>
 <br>
+
 ## 2. Write GetField
 以下のように記述することで、Googleスプレッドシートの値を反映させることができます。
 
