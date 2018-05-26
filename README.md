@@ -1,5 +1,9 @@
 # SpradSheet Load Attribute
-Googleスプレッドシートの値を取得・反映させるカスタムアトリビュート
+
+# About
+Googleスプレッドシートの値を取得、コンポーネントのメンバーへと反映させるCustomAttributeです。<br>
+<br>
+シーンに最初から配置されているオブジェクトのコンポーネントのメンバ変数の値をGoogleスプレッドシートで上書きします(シーン開始時)<br>
 
 # 使い方 How to use
 
@@ -9,12 +13,14 @@ Settings.csから以下の３つを設定します<br>
 ・sheetId<br>
 ・Range<br>
 
+---
+
 ### API Key
 Google Console APIで作成したAPI KEYを設定します<br>
 https://developers.google.com/sheets/api/guides/authorizing?hl=ja
 
 <img src = "Demo/1_api_key.png" height = 240>
-
+<br>
 ### sheetId
 GoogleスプレッドシートのsheetIdを設定します。<br>
 https://developers.google.com/sheets/guides/concepts?hl=ja
@@ -27,7 +33,7 @@ Settings.csを以下のように設定します<br>
 ```
 SheetId = "1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps2";
 ```
-
+<br>
 ### Range
 Googleスプレッドシートで取得したい範囲を設定します。
 
@@ -37,7 +43,7 @@ Googleスプレッドシートの シート1の値を取得したい場合はSet
 Range = "シート1";
 ```
 <img src = "Demo/3_range.png" height = 240>
-
+<br>
 ## 2. Write GetField
 以下のように記述することで、Googleスプレッドシートの値を反映させることができます。
 
@@ -48,5 +54,5 @@ public class TestBehaviour : MonoBehaviour
     [GetSheet("光速度")] private int _lightSpeed;
 ```
 
-<img src = "Demo/4.png" height = 180><br>
+<img src = "Demo/4.png" height = 90><br>
 Googleスプレッドシートの取得したい値の第１カラムをGetFieldの中で指定します。
